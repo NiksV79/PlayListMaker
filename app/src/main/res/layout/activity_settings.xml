@@ -43,115 +43,58 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/lay_settings_v_interval"
+            android:layout_marginBottom="@dimen/lay_settings_v_interval"
             android:layout_marginStart="@dimen/lay_settings_items_start"
             android:layout_marginEnd="@dimen/lay_settings_items_end"
             android:orientation="vertical">
 
             <!-- Темная тема -->
-            <LinearLayout
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_settings_v_interval"
+                android:layout_marginBottom="@dimen/lay_settings_v_interval"
+                android:text = "@string/lay_settings_op_darktheme"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"/>
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_settings_items_height"
                 android:layout_marginTop="@dimen/lay_settings_v_interval"
                 android:layout_marginBottom="@dimen/lay_settings_v_interval"
-                android:orientation="horizontal">
+                android:layout_marginEnd="@dimen/lay_settings_text_end_padding"
+                android:gravity="center_vertical"
+                android:text="@string/lay_settings_op_share"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"
+                app:drawableEndCompat="@drawable/ic_share"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/lay_settings_op_darktheme"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/lay_settings_text_size" />
-
-
-                <LinearLayout
-                    android:layout_width="@dimen/lay_settings_img_width"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:minWidth="@dimen/lay_settings_switch_width_min" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_settings_items_height"
                 android:layout_marginTop="@dimen/lay_settings_v_interval"
                 android:layout_marginBottom="@dimen/lay_settings_v_interval"
-                android:orientation="horizontal">
+                android:layout_marginEnd="@dimen/lay_settings_text_end_padding"
+                android:gravity="center_vertical"
+                android:text="@string/lay_settings_op_support"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"
+                app:drawableEndCompat="@drawable/ic_support"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/lay_settings_op_share"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/lay_settings_text_size" />
-
-                <ImageView
-                    android:layout_width="@dimen/lay_settings_img_width"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/lay_settings_op_share"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/ic_share" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/lay_settings_items_height"
                 android:layout_marginTop="@dimen/lay_settings_v_interval"
                 android:layout_marginBottom="@dimen/lay_settings_v_interval"
-                android:orientation="horizontal">
+                android:layout_marginEnd="@dimen/lay_settings_text_end_padding"
+                android:gravity="center_vertical"
+                android:text="@string/lay_settings_op_user_agreement"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/lay_settings_op_support"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/lay_settings_text_size" />
-
-                <ImageView
-                    android:layout_width="@dimen/lay_settings_img_width"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/lay_settings_op_support"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/ic_support" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/lay_settings_items_height"
-                android:layout_marginTop="@dimen/lay_settings_v_interval"
-                android:layout_marginBottom="@dimen/lay_settings_v_interval"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/lay_settings_op_user_agreement"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/lay_settings_text_size" />
-
-                <ImageView
-                    android:layout_width="@dimen/lay_settings_img_width"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/lay_settings_op_user_agreement"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/ic_arrow_forward" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
