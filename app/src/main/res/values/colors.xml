@@ -6,7 +6,9 @@
 
     <color name="text">@color/black</color>
     <color name="bg">@color/white</color>
+
     <color name="lay_main_bg">#3772E7</color>
+    <color name="lmn_head">@color/white</color>
 
     <color name="lsr_edit_text_bg">#E6E8EB</color>
     <color name="lsr_edit_text">@color/black</color>

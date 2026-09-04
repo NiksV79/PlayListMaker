@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg">
 
     <!-- Заголовок страницы -->
     <LinearLayout
@@ -39,7 +40,6 @@
                 android:id="@+id/lay_settings_op_share"
                 android:layout_width="match_parent"
                 android:text="@string/lay_settings_op_share"
-                app:switchMinWidth="56dp"
                 app:drawableEndCompat="@drawable/ic_share"/>
 
             <TextView
