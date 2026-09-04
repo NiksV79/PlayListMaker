@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Playlist Maker</string>
+
+    <string name="text_find">Поиск</string>
+    <string name="text_mediateka">Медиатека</string>
+    <string name="text_settings">Настройки</string>
+
+    <string name="lay_settings_head">Настройки</string>
+
+    <string name="lay_settings_op_share">Поделиться приложением</string>
+    <string name="lay_settings_op_support">Написать в поддержку</string>
+    <string name="lay_settings_op_user_agreement">Пользовательское соглашение</string>
+    <string name="lay_settings_op_darktheme">Темная тема</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+</resources>

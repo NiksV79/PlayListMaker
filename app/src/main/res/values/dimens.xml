@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lays_head_start">10dp</dimen>
+    <dimen name="lays_head_v_before">5dp</dimen>
+    <dimen name="lays_head_v_after">10dp</dimen>
+    <dimen name="lays_head_text_size">22sp</dimen>
+
+    <dimen name="lay_main_head_text_size">22sp</dimen>
+    <dimen name="lay_main_head_text_start">10dp</dimen>
+    <dimen name="lay_main_btn_v_interval">2dp</dimen>
+    <dimen name="lay_main_btn_h_interval">8dp</dimen>
+    <dimen name="lay_main_btn_corner_radius">16dp</dimen>
+    <dimen name="lay_main_btn_text_size">24sp</dimen>
+    <dimen name="lay_main_btn_icon_padding">12dp</dimen>
+
+    <dimen name="lay_settings_items_height">50dp</dimen>
+    <dimen name="lay_settings_items_start">20dp</dimen>
+    <dimen name="lay_settings_items_end">10dp</dimen>
+    <dimen name="lay_settings_v_interval">2dp</dimen>
+
+    <dimen name="lay_settings_text_size">18sp</dimen>
+    <dimen name="lay_settings_text_end_padding">15dp</dimen>
+</resources>

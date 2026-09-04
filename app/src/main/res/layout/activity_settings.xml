@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- Заголовок страницы -->
+    <LinearLayout
+        android:id="@+id/lay_settings_layout_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/lays_head_start"
+        android:layout_marginTop="@dimen/lays_head_v_before"
+        android:layout_marginBottom="@dimen/lays_head_v_after"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/lay_settings_head"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lay_settings_head"
+            android:textColor="@color/text"
+            android:textSize="@dimen/lays_head_text_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- Меню -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/lay_settings_v_interval"
+            android:layout_marginBottom="@dimen/lay_settings_v_interval"
+            android:layout_marginStart="@dimen/lay_settings_items_start"
+            android:layout_marginEnd="@dimen/lay_settings_items_end"
+            android:orientation="vertical">
+
+            <!-- Темная тема -->
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lay_settings_v_interval"
+                android:layout_marginBottom="@dimen/lay_settings_v_interval"
+                android:text = "@string/lay_settings_op_darktheme"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_settings_items_height"
+                android:layout_marginTop="@dimen/lay_settings_v_interval"
+                android:layout_marginBottom="@dimen/lay_settings_v_interval"
+                android:layout_marginEnd="@dimen/lay_settings_text_end_padding"
+                android:gravity="center_vertical"
+                android:text="@string/lay_settings_op_share"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"
+                app:drawableEndCompat="@drawable/ic_share"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_settings_items_height"
+                android:layout_marginTop="@dimen/lay_settings_v_interval"
+                android:layout_marginBottom="@dimen/lay_settings_v_interval"
+                android:layout_marginEnd="@dimen/lay_settings_text_end_padding"
+                android:gravity="center_vertical"
+                android:text="@string/lay_settings_op_support"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"
+                app:drawableEndCompat="@drawable/ic_support"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lay_settings_items_height"
+                android:layout_marginTop="@dimen/lay_settings_v_interval"
+                android:layout_marginBottom="@dimen/lay_settings_v_interval"
+                android:layout_marginEnd="@dimen/lay_settings_text_end_padding"
+                android:gravity="center_vertical"
+                android:text="@string/lay_settings_op_user_agreement"
+                android:textColor="@color/text"
+                android:textSize="@dimen/lay_settings_text_size"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
