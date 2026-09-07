@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name = "lays_back">
+        <item name = "android:layout_height">56dp</item>
+        <item name = "android:layout_width">match_parent</item>
+        <item name = "android:orientation">horizontal</item>
+        <item name = "android:layout_marginBottom">5dp</item>
+        <item name = "android:layout_marginStart">4dp</item>
+        <item name = "android:gravity">center_vertical</item>
+        <item name = "android:clickable">true</item>
+        <item name = "android:focusable">true</item>
+        <item name = "android:background">?attr/selectableItemBackground</item>
+    </style>
+    <style name = "lays_back_img">
+        <item name = "android:theme">@style/Theme.PlaylistMaker</item>
+        <item name = "android:layout_height">48dp</item>
+        <item name = "android:layout_width">48dp</item>
+        <item name = "android:gravity">center</item>
+        <item name = "android:tint">?attr/colorOnPrimary</item>
+    </style>
+    <style name = "lays_back_text">
+        <item name = "android:layout_height">match_parent</item>
+        <item name = "android:layout_width">match_parent</item>
+        <item name = "android:theme">@style/Theme.PlaylistMaker</item>
+        <item name = "android:textSize">22sp</item>
+        <item name = "android:fontFamily">@font/ys_display_medium</item>
+        <item name = "android:textFontWeight">500</item>
+        <item name = "android:gravity">center_vertical</item>
+        <item name = "android:layout_marginStart">12dp</item>
+        <item name = "android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <!-- Главное окно-->
+    <style name = "lay_main_bg">
+        <item name = "android:background">@color/lay_main_bg</item>
+    </style>
+    <style name = "lay_main_head">
+        <item name = "android:layout_height">48dp</item>
+        <item name = "android:padding">12dp</item>
+        <item name = "android:textColor">@color/lmn_head</item>
+        <item name = "android:textSize">22sp</item>
+        <item name = "android:fontFamily">@font/ys_display_medium</item>
+        <item name = "android:textFontWeight">500</item>
+    </style>
+    <style name = "lay_main_panel">
+        <item name = "android:layout_marginTop">16dp</item>
+        <item name = "android:layout_marginBottom">16dp</item>
+        <item name = "android:layout_marginStart">16dp</item>
+        <item name = "android:layout_marginEnd">16dp</item>
+    </style>
+    <style name = "lay_main_btn">
+        <item name = "android:layout_marginTop">8dp</item>
+        <item name = "android:layout_marginBottom">8dp</item>
+        <item name = "android:backgroundTint">@color/white</item>
+        <item name = "android:foreground">?attr/selectableItemBackground</item>
+        <item name = "android:textAllCaps">false</item>
+        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textSize">22sp</item>
+        <item name = "android:fontFamily">@font/ys_display_medium</item>
+        <item name = "android:textFontWeight">500</item>
+        <item name = "cornerRadius">16dp</item>
+        <item name = "iconGravity">textStart</item>
+        <item name = "iconPadding">8dp</item>
+        <item name = "iconTint">@color/black</item>
+    </style>
+
+    <!-- Настройки -->
+    <style name = "lay_settings_switch">
+        <item name = "android:theme">@style/Theme.PlaylistMaker</item>
+        <item name = "android:layout_height">61dp</item>
+        <item name = "android:layout_marginStart">16dp</item>
+        <item name = "android:layout_marginEnd">6dp</item>
+        <item name = "android:textSize">16sp</item>
+        <item name = "android:fontFamily">@font/ys_display_regular</item>
+        <item name = "android:textFontWeight">400</item>
+        <item name = "android:textColor">?attr/colorOnPrimary</item>
+    </style>
+    <style name = "lay_settings_text">
+        <item name = "android:theme">@style/Theme.PlaylistMaker</item>
+        <item name = "android:layout_height">61dp</item>
+        <item name = "android:layout_marginStart">16dp</item>
+        <item name = "android:layout_marginEnd">12dp</item>
+        <item name = "android:textSize">16sp</item>
+        <item name = "android:fontFamily">@font/ys_display_regular</item>
+        <item name = "android:textFontWeight">400</item>
+        <item name = "android:gravity">center_vertical</item>
+        <item name = "android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <!-- Поиск -->
+    <style name = "lsr_edittext">
+        <item name = "android:theme">@style/Theme.PlaylistMaker</item>
+        <item name = "android:layout_height">52dp</item>
+        <item name = "android:layout_marginStart">16dp</item>
+        <item name = "android:layout_marginEnd">16dp</item>
+        <item name = "android:layout_marginTop">8dp</item>
+        <item name = "android:layout_marginBottom">8dp</item>
+        <item name = "android:layout_gravity">center_vertical</item>
+        <item name = "android:drawableStart">@drawable/ic_search14</item>
+        <item name = "android:drawableTint">@color/lsr_edit_text_hint</item>
+        <item name = "android:drawableEnd">@drawable/ic_clear</item>
+        <item name = "android:paddingStart">12dp</item>
+        <item name = "android:paddingEnd">12dp</item>
+        <item name = "android:drawablePadding">8dp</item>
+        <item name = "android:background">@drawable/bg_rounded_corner</item>
+        <item name = "android:textColorHint">@color/lsr_edit_text_hint</item>
+        <item name = "android:fontFamily">@font/ys_display_regular</item>
+        <item name = "android:textFontWeight">400</item>
+        <item name = "android:textSize">16sp</item>
+        <item name = "android:gravity">center_vertical</item>
+        <item name = "android:textColor">@color/lsr_edit_text</item>
+    </style>
+</resources>
