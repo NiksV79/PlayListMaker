@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 16 dp от строки поиска-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/tw_rect"
+    android:layout_width="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        style="@style/tw_artworkUrl100"
+        android:id="@+id/tw_artworkUrl100"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        style="@style/tw_rect_center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tw_trackName"
+            android:id="@+id/tw_trackName"
+            android:layout_width="match_parent"
+            tools:text="This is the track name!" />
+
+        <LinearLayout
+            style="@style/tw_ArtistName_rect"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tw_ArtistName"
+                android:id="@+id/tw_ArtistName"
+                android:layout_height="match_parent"
+                tools:text="The band!" />
+
+            <ImageView
+                style="@style/tw_ArtistName_div"
+                android:layout_height="match_parent"
+                tools:srcCompat="@drawable/ic_point3" />
+
+            <TextView
+                style="@style/tw_trackTime"
+                android:id="@+id/tw_trackTime"
+                android:layout_height="match_parent"
+                tools:text="20:26" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        style="@style/tw_arrow"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/ic_arrow_forward" />
+</LinearLayout>

@@ -3,13 +3,22 @@ package com.example.playlistmaker
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.example.playlistmaker.data.Track
+import com.example.playlistmaker.data.Tracks
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity:AppCompatActivity() {
     lateinit var et:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +30,16 @@ class SearchActivity : AppCompatActivity() {
             finish()
         }
 
+        initEditText()
+        initTracks()
+    }
+
+    private fun initTracks() {
+        val recycler = findViewById<RecyclerView>(R.id.lsr_tracks)
+        recycler.adapter = TracksAdapter(Tracks)
+    }
+
+    private fun initEditText() {
         et = findViewById<EditText>(R.id.lsr_edittext)
 
         val tw = object : TextWatcher {
@@ -29,7 +48,7 @@ class SearchActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {}
         }
 
-        et.setOnTouchListener { v, event -> etOnTouch(event) }
+        et.setOnTouchListener { _, event -> etOnTouch(event) }
         et.addTextChangedListener(tw)
 
         twOnTextChanged(et.text)
@@ -80,3 +99,39 @@ class SearchActivity : AppCompatActivity() {
         const val ET_DEF = ""
     }
 }
+
+class TracksViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
+    private val trackName: TextView = itemView.findViewById(R.id.tw_trackName)
+    private val artistName: TextView = itemView.findViewById(R.id.tw_ArtistName)
+    private val trackTime: TextView = itemView.findViewById(R.id.tw_trackTime)
+    private val artworkUrl100: ImageView = itemView.findViewById(R.id.tw_artworkUrl100)
+
+    fun bind(track: Track) {
+        trackName.text = track.trackName
+        artistName.text = track.artistName
+        trackTime.text = track.trackTime
+        Glide.with(itemView).
+            load(track.artworkUrl100).
+            fitCenter().
+            placeholder(R.drawable.ic_placeholder).
+            transform(RoundedCorners(10)).
+            into(artworkUrl100)
+    }
+}
+
+class TracksAdapter(private val tracks: Tracks) : RecyclerView.Adapter<TracksViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TracksViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.track_view, parent, false)
+        return TracksViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: TracksViewHolder, position: Int) {
+        holder.bind(tracks[position])
+    }
+
+    override fun getItemCount(): Int {
+        return tracks.size
+    }
+}
+
