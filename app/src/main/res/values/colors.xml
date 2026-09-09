@@ -13,4 +13,8 @@
     <color name="lsr_edit_text_bg">#E6E8EB</color>
     <color name="lsr_edit_text">@color/black</color>
     <color name="lsr_edit_text_hint">#818C99</color>
+
+    <color name="tw_TrackName">#000000</color>
+    <color name="tw_ArtistName">#AEAFB4</color>
+
 </resources>

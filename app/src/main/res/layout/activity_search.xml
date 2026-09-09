@@ -1,33 +1,41 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/bg">
+    android:background="@color/bg"
+    android:orientation="vertical">
 
     <!-- Заголовок страницы -->
     <LinearLayout
-        style = "@style/lays_back"
-        android:id="@+id/lsr_back">
+        android:id="@+id/lsr_back"
+        style="@style/lays_back">
 
         <ImageView
-            style = "@style/lays_back_img"
+            style="@style/lays_back_img"
             android:contentDescription="@string/text_search"
             app:srcCompat="@drawable/ic_back" />
 
         <TextView
-            style = "@style/lays_back_text"
-            android:text="@string/text_search"/>
+            style="@style/lays_back_text"
+            android:text="@string/text_search" />
     </LinearLayout>
 
     <EditText
-        style = "@style/lsr_edittext"
         android:id="@+id/lsr_edittext"
+        style="@style/lsr_edittext"
         android:layout_width="match_parent"
+        android:hint="@string/text_search"
         android:inputType="text"
         android:lines="1"
-        android:maxLength="50"
-        android:hint="@string/text_search"
-        />
+        android:maxLength="50" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lsr_tracks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/track_view" />
 
 </LinearLayout>
