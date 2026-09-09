@@ -12,7 +12,8 @@
     <ImageView
         style="@style/tw_artworkUrl100"
         android:id="@+id/tw_artworkUrl100"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:srcCompat="@drawable/ic_placeholder"/>
 
     <LinearLayout
         style="@style/tw_rect_center"
@@ -25,23 +26,24 @@
             style="@style/tw_trackName"
             android:id="@+id/tw_trackName"
             android:layout_width="match_parent"
-            tools:text="This is the track name!" />
+            tools:text="This is track name!" />
 
         <LinearLayout
             style="@style/tw_ArtistName_rect"
             android:layout_width="match_parent"
             android:orientation="horizontal">
 
+            <!--"The very very very very very very very very very very very very very very very very great band!"-->
             <TextView
                 style="@style/tw_ArtistName"
                 android:id="@+id/tw_ArtistName"
                 android:layout_height="match_parent"
-                tools:text="The band!" />
+                tools:text="The very very very very very very very very very very very very very very very very great band!"/>
 
             <ImageView
                 style="@style/tw_ArtistName_div"
                 android:layout_height="match_parent"
-                tools:srcCompat="@drawable/ic_point3" />
+                app:srcCompat="@drawable/ic_point3" />
 
             <TextView
                 style="@style/tw_trackTime"

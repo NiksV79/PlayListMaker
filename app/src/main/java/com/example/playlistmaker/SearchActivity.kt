@@ -3,6 +3,7 @@ package com.example.playlistmaker
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -106,6 +107,20 @@ class TracksViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
     private val trackTime: TextView = itemView.findViewById(R.id.tw_trackTime)
     private val artworkUrl100: ImageView = itemView.findViewById(R.id.tw_artworkUrl100)
 
+    var artworkUrl100CornerRadius:Int = 0
+
+    init {
+        artworkUrl100CornerRadius = dpToPx(4F)
+    }
+
+    private fun dpToPx(dp: Float): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp,
+            itemView.context.resources.displayMetrics
+        ).toInt()
+    }
+
     fun bind(track: Track) {
         trackName.text = track.trackName
         artistName.text = track.artistName
@@ -114,7 +129,7 @@ class TracksViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
             load(track.artworkUrl100).
             fitCenter().
             placeholder(R.drawable.ic_placeholder).
-            transform(RoundedCorners(10)).
+            transform(RoundedCorners(artworkUrl100CornerRadius)).
             into(artworkUrl100)
     }
 }
