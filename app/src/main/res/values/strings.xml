@@ -20,5 +20,8 @@
     <string name="lay_settings_op_support_email_text">"Спасибо разработчикам и разработчицам за крутое приложение!"</string>
 
     <string name="lay_settings_op_user_agreement_weblink">"https://yandex.ru/legal/practicum_offer/ru/"</string>
+    <string name="lsr_nodata">Ничего не нашлось</string>
+    <string name="lsr_nowifi">Проблемы со связью\n\nЗагрузка не удалась. Проверьте\n подключение к интернету</string>
+    <string name="text_update">Обновить</string>
 
 </resources>

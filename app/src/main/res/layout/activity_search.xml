@@ -28,14 +28,88 @@
         android:layout_width="match_parent"
         android:hint="@string/text_search"
         android:inputType="text"
+        android:singleLine="true"
         android:lines="1"
-        android:maxLength="50" />
+        android:maxLength="50"
+        android:imeOptions="actionDone" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lsr_tracks"
-        android:layout_width="match_parent"
+    <LinearLayout
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/track_view" />
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+        <FrameLayout
+            android:id = "@+id/lsr_list"
+            tools:visibility="gone"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lsr_tracks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/track_view" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/lsr_nodata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            tools:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/lsr_nodata_img"
+                    style="@style/lsr_nodata_img"
+                    android:contentDescription="@string/lsr_nodata"
+                    app:srcCompat="@drawable/ic_nodata" />
+
+                <TextView
+                    style="@style/lsr_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lsr_nodata" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/lsr_nowifi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/lsr_nowifi_img"
+                    style="@style/lsr_nodata_img"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="@string/lsr_nowifi"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_nowifi" />
+
+                <TextView
+                    style="@style/lsr_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lsr_nowifi" />
+                <Button
+                    android:id="@+id/lsr_nowifi_btn"
+                    style="@style/lsr_nowifi_btn"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/text_update"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>

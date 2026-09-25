@@ -1,5 +1,6 @@
 package com.example.playlistmaker.data
 
+/*
 object Tracks: ArrayList<Track>() {
     init {
         add(Track(
@@ -34,3 +35,4 @@ object Tracks: ArrayList<Track>() {
         )
     }
 }
+ */
