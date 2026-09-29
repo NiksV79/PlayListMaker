@@ -3,29 +3,29 @@ package com.example.playlistmaker
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.playlistmaker.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySettingsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnBack = findViewById<View>(R.id.lay_settings_layout_back)
-        btnBack.setOnClickListener {
+        binding.laySettingsLayoutBack.setOnClickListener {
             finish()
         }
 
-        val btnShare = findViewById<View>(R.id.lay_settings_op_share)
-        btnShare.setOnClickListener {
+        binding.laySettingsOpShare.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
             intent.putExtra(Intent.EXTRA_TEXT,getString(R.string.lay_settings_op_share_weblink))
             intent.type = "text/plain"
             startActivity(Intent.createChooser(intent, getString(R.string.lay_settings_op_share)))
         }
 
-        val btnSupport = findViewById<View>(R.id.lay_settings_op_support)
-        btnSupport.setOnClickListener {
+        binding.laySettingsOpSupport.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.data = Uri.parse("mailto:")
             intent.putExtra(Intent.EXTRA_EMAIL,arrayOf(getString(R.string.lay_settings_op_support_email_sender)))
@@ -34,11 +34,18 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnUserAgreement = findViewById<View>(R.id.lay_settings_op_user_agreement)
-        btnUserAgreement.setOnClickListener {
+        binding.laySettingsOpUserAgreement.setOnClickListener {
             val url = getString(R.string.lay_settings_op_user_agreement_weblink)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
         }
+
+        binding.lstTheme.isChecked = (applicationContext as App).isDarkTheme
+        binding.lstTheme.setOnCheckedChangeListener { _,checked -> changeTheme(checked) }
     }
+
+    private fun changeTheme(checked: Boolean) {
+        (applicationContext as App).switchTheme(checked)
+    }
+
 }

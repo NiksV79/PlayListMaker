@@ -30,8 +30,9 @@
             android:orientation="vertical">
 
             <!-- Темная тема -->
-            <androidx.appcompat.widget.SwitchCompat
-                style = "@style/lay_settings_switch"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/lst_theme"
+                style = "@style/lst_theme"
                 android:layout_width="match_parent"
                 android:text = "@string/lay_settings_op_darktheme"/>
 

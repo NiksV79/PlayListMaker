@@ -64,7 +64,7 @@
     </style>
 
     <!-- Настройки -->
-    <style name = "lay_settings_switch">
+    <style name = "lst_theme">
         <item name = "android:layout_height">61dp</item>
         <item name = "android:layout_marginStart">16dp</item>
         <item name = "android:layout_marginEnd">6dp</item>
@@ -122,9 +122,8 @@
         <item name = "android:scaleType">center</item>
         <item name = "android:layout_marginBottom">16dp</item>
     </style>
-    <style name = "lsr_nowifi_btn">
-        <item name = "android:layout_height">wrap_content</item>
-        <item name = "android:layout_width">wrap_content</item>
+    <style name = "lsr_black_btn">
+        <item name = "android:layout_gravity">center_horizontal</item>
         <item name = "android:layout_marginTop">24dp</item>
         <item name = "android:foreground">?attr/selectableItemBackground</item>
         <item name = "android:backgroundTint">@color/text</item>
