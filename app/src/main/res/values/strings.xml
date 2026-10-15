@@ -23,5 +23,7 @@
     <string name="lsr_nodata">Ничего не нашлось</string>
     <string name="lsr_nowifi">Проблемы со связью\n\nЗагрузка не удалась. Проверьте\n подключение к интернету</string>
     <string name="text_update">Обновить</string>
+    <string name="lsr_history_clear_btn">Очистить историю</string>
+    <string name="lsr_history_text">Вы искали</string>
 
 </resources>

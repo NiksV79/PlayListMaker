@@ -37,18 +37,45 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
-        <FrameLayout
-            android:id = "@+id/lsr_list"
-            tools:visibility="gone"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lsr_list"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_width="match_parent" >
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/lsr_history_text"
+                style="@style/lsr_nodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/lsr_history_text" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lsr_tracks"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@+id/lsr_history_text"
+                app:layout_constraintBottom_toTopOf="@+id/lsr_history_clear_btn"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/track_view" />
-        </FrameLayout>
+                tools:listitem="@layout/track_view"
+                tools:itemCount="3"/>
+
+            <Button
+                android:id="@+id/lsr_history_clear_btn"
+                style="@style/lsr_black_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/lsr_history_clear_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lsr_tracks"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <FrameLayout
             android:id="@+id/lsr_nodata"
@@ -82,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:visibility="visible">
+            tools:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,11 +130,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/lsr_nowifi" />
+
                 <Button
                     android:id="@+id/lsr_nowifi_btn"
-                    style="@style/lsr_nowifi_btn"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/text_update"/>
+                    style="@style/lsr_black_btn"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/text_update" />
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
