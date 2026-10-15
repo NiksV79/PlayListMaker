@@ -3,6 +3,7 @@ package com.example.playlistmaker
 import android.app.Application
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.edit
 
 class App : Application() {
     var isDarkTheme = false
@@ -17,9 +18,9 @@ class App : Application() {
 
     fun switchTheme(newIsDarkTheme: Boolean) {
         isDarkTheme = newIsDarkTheme
-        prefs.edit()
-            .putBoolean(AppPrefKeys.KEY_DARKTHEME,isDarkTheme)
-            .apply()
+        prefs.edit {
+            putBoolean(AppPrefKeys.KEY_DARKTHEME,isDarkTheme)
+        }
         applyTheme()
     }
 
@@ -39,3 +40,4 @@ object AppPrefKeys {
     const val KEY_DARKTHEME = "spv_key_darktheme"
     const val KEY_TRACKS_HISTORY = "spv_key_tracks_history"
 }
+

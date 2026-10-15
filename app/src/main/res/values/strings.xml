@@ -1,29 +1,37 @@
 <resources>
     <string name="app_name">Playlist Maker</string>
 
+    <!-- Common -->
     <string name="text_search">Поиск</string>
     <string name="text_mediateka">Медиатека</string>
     <string name="text_settings">Настройки</string>
+    <string name="text_back">Назад</string>
+    <string name="text_update">Обновить</string>
+    <string name="text_content">Контент</string>
 
+    <!-- Lay settings -->
     <string name="lay_settings_head">Настройки</string>
-
     <string name="lay_settings_op_share">Поделиться приложением</string>
     <string name="lay_settings_op_support">Написать в поддержку</string>
     <string name="lay_settings_op_user_agreement">Пользовательское соглашение</string>
     <string name="lay_settings_op_darktheme">Темная тема</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-
     <string name="lay_settings_op_share_weblink">"https://practicum.yandex.ru/android-developer/"</string>
-
     <string name="lay_settings_op_support_email_sender">"nkt1c@list.ru"</string>
     <string name="lay_settings_op_support_email_subject">"Сообщение разработчикам и разработчицам приложения Playlist Maker"</string>
     <string name="lay_settings_op_support_email_text">"Спасибо разработчикам и разработчицам за крутое приложение!"</string>
-
     <string name="lay_settings_op_user_agreement_weblink">"https://yandex.ru/legal/practicum_offer/ru/"</string>
+
+    <!-- Lay search -->
     <string name="lsr_nodata">Ничего не нашлось</string>
     <string name="lsr_nowifi">Проблемы со связью\n\nЗагрузка не удалась. Проверьте\n подключение к интернету</string>
-    <string name="text_update">Обновить</string>
     <string name="lsr_history_clear_btn">Очистить историю</string>
     <string name="lsr_history_text">Вы искали</string>
+
+    <!-- Lay Player -->
+    <string name="lpl_trackTime">Длительность</string>
+    <string name="lpl_collectionName">Альбом</string>
+    <string name="lpl_year">Год</string>
+    <string name="lpl_primaryGenreName">Жанр</string>
+    <string name="lpl_country">Страна</string>
 
 </resources>

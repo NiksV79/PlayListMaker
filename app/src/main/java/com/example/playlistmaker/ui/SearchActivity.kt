@@ -1,9 +1,10 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.ui
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -14,35 +15,42 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.playlistmaker.api.ITunesApi
-import com.example.playlistmaker.api.ITunesApiConfig
-import com.example.playlistmaker.api.ITunesResponseSongs
+import com.example.playlistmaker.App
+import com.example.playlistmaker.AppPrefKeys
+import com.example.playlistmaker.R
+import com.example.playlistmaker.data.Entities
+import com.example.playlistmaker.misc.ITunesApi
+import com.example.playlistmaker.misc.ITunesApiConfig
+import com.example.playlistmaker.misc.ITunesResponseSongs
 import com.example.playlistmaker.data.Track
+import com.example.playlistmaker.data.toTrackTime
 import com.example.playlistmaker.databinding.ActivitySearchBinding
+import com.example.playlistmaker.misc.Utils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.text.SimpleDateFormat
-import java.util.Locale
 
-class SearchActivity:AppCompatActivity() {
-    lateinit var app:App
-    internal lateinit var binding: ActivitySearchBinding
+class SearchActivity: AppCompatActivity() {
+    lateinit var app: App
+
+    private lateinit var binding: ActivitySearchBinding
     lateinit var et:EditText
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(ITunesApiConfig.url)
+        .baseUrl(ITunesApiConfig.URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     private val iTunesService = retrofit.create(ITunesApi::class.java)
 
     lateinit var recycler: RecyclerView
-    val adapter = TracksAdapter {track -> trackHistoryAdd(track)}
+    val adapter = TracksAdapter { track ->  gotoPlayerActivity(track) }
+
     private val tracks = ArrayList<Track>()
     private val tracksHistory = ArrayList<Track>()
 
@@ -123,6 +131,7 @@ class SearchActivity:AppCompatActivity() {
             false -> ViewState.LIST
         }
     }
+    @SuppressLint("NotifyDataSetChanged")
     private fun changeState(newState:ViewState) {
         if (state == newState) return
 
@@ -175,6 +184,15 @@ class SearchActivity:AppCompatActivity() {
         }
     }
 
+    // Запустить Player
+    private fun gotoPlayerActivity(track: Track) {
+        trackHistoryAdd(track)
+
+        val intent = Intent(this, PlayerActivity::class.java)
+        intent.putExtra(Entities.TRACK,track)
+        startActivity(intent)
+    }
+
     //-- методы истории
     fun trackHistoryAdd(track:Track) {
         if (state != ViewState.LIST) return
@@ -191,9 +209,9 @@ class SearchActivity:AppCompatActivity() {
     }
     fun trackHistorySave() {
         val json = Utils.gson.toJson(tracksHistory)
-        app.prefs.edit()
-            .putString(AppPrefKeys.KEY_TRACKS_HISTORY,json)
-            .apply()
+        app.prefs.edit {
+            putString(AppPrefKeys.KEY_TRACKS_HISTORY,json)
+        }
     }
     fun tracksHistoryClear() {
         tracksHistory.clear()
@@ -275,7 +293,10 @@ class SearchActivity:AppCompatActivity() {
     }
 }
 
-class TracksViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
+class TracksViewHolder(
+    itemView: View,
+    private val adapter: TracksAdapter
+) : RecyclerView.ViewHolder(itemView) {
     private val trackName: TextView = itemView.findViewById(R.id.tw_trackName)
     private val artistName: TextView = itemView.findViewById(R.id.tw_ArtistName)
     private val trackTime: TextView = itemView.findViewById(R.id.tw_trackTime)
@@ -284,15 +305,16 @@ class TracksViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
     var artworkUrl100CornerRadius:Int = 0
 
     init {
-        artworkUrl100CornerRadius = dpToPx(4F)
+        artworkUrl100CornerRadius = Utils.dpToPx(itemView.context,4F)
+        itemView.setOnClickListener { onClickInner() }
     }
 
-    private fun dpToPx(dp: Float): Int {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp,
-            itemView.context.resources.displayMetrics
-        ).toInt()
+    private fun onClickInner() {
+        val pos = bindingAdapterPosition
+        if (pos != RecyclerView.NO_POSITION) {
+            val track = adapter.tracks.getOrNull(pos)
+            track?.let { adapter.onClick(track) }
+        }
     }
 
     fun bind(track: Track) {
@@ -308,18 +330,19 @@ class TracksViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
     }
 }
 
-class TracksAdapter(val trackAdd: (Track) -> Unit) : RecyclerView.Adapter<TracksViewHolder>() {
+class TracksAdapter(
+    val onClick: (Track) -> Unit
+) : RecyclerView.Adapter<TracksViewHolder>() {
     var tracks = ArrayList<Track>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TracksViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.track_view, parent, false)
-        return TracksViewHolder(view)
+        return TracksViewHolder(view,this)
     }
 
     override fun onBindViewHolder(holder: TracksViewHolder, position: Int) {
         val track = tracks[position]
         holder.bind(track)
-        holder.itemView.setOnClickListener { trackAdd(track) }
     }
 
     override fun getItemCount(): Int {
@@ -328,6 +351,3 @@ class TracksAdapter(val trackAdd: (Track) -> Unit) : RecyclerView.Adapter<Tracks
 
 }
 
-fun Long.toTrackTime(): String {
-    return SimpleDateFormat("mm:ss", Locale.getDefault()).format(this)
-}

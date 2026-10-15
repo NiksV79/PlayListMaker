@@ -3,6 +3,7 @@
     <color name="black">#1A1B22</color>
     <color name="white">#FFFFFF</color>
     <color name="red">#FF0000</color>
+    <color name="gray">#AEAFB4</color>
 
     <color name="text">@color/black</color>
     <color name="bg">@color/white</color>
@@ -15,6 +16,6 @@
     <color name="lsr_edit_text_hint">#818C99</color>
 
     <color name="tw_TrackName">#000000</color>
-    <color name="tw_ArtistName">#AEAFB4</color>
+    <color name="tw_ArtistName">@color/gray</color>
 
 </resources>
