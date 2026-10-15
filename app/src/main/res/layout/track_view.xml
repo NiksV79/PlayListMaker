@@ -13,6 +13,7 @@
         style="@style/tw_artworkUrl100"
         android:id="@+id/tw_artworkUrl100"
         android:layout_height="match_parent"
+        android:importantForAccessibility="no"
         tools:srcCompat="@drawable/ic_placeholder"/>
 
     <LinearLayout
@@ -33,7 +34,6 @@
             android:layout_width="match_parent"
             android:orientation="horizontal">
 
-            <!--"The very very very very very very very very very very very very very very very very great band!"-->
             <TextView
                 style="@style/tw_ArtistName"
                 android:id="@+id/tw_ArtistName"
@@ -43,6 +43,7 @@
             <ImageView
                 style="@style/tw_ArtistName_div"
                 android:layout_height="match_parent"
+                android:importantForAccessibility="no"
                 app:srcCompat="@drawable/ic_point3" />
 
             <TextView
@@ -54,7 +55,9 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/tw_arrow"
         style="@style/tw_arrow"
         android:layout_height="match_parent"
+        android:importantForAccessibility="no"
         app:srcCompat="@drawable/ic_arrow_forward" />
 </LinearLayout>
