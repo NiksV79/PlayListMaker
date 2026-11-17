@@ -1,4 +1,4 @@
-package com.example.playlistmaker.api
+package com.example.playlistmaker.misc
 
 import com.example.playlistmaker.data.Track
 import retrofit2.Call
@@ -16,5 +16,5 @@ class ITunesResponseSongs(
 )
 
 object ITunesApiConfig {
-    const val url = "https://itunes.apple.com"
+    const val URL = "https://itunes.apple.com"
 }

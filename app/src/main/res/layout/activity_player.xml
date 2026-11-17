@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- Заголовок страницы -->
+    <LinearLayout
+        android:id="@+id/lpl_back"
+        style="@style/lays_back">
+
+        <ImageView
+            style="@style/lays_back_img"
+            android:contentDescription="@string/text_back"
+            app:srcCompat="@drawable/ic_back" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lpl_main"
+            android:layout_width="match_parent"
+            android:layout_height="749dp">
+
+            <ImageView
+                android:id="@+id/lpl_track_img"
+                style="@style/lpl_track_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/ic_placeholder_312"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/lpl_track"
+                style="@style/lpl_track"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_track_img"
+                tools:text="Yesterday (Remastered 2009)" />
+
+            <TextView
+                android:id="@+id/lpl_artist"
+                style="@style/lpl_artist"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_track"
+                tools:text="The Beatles" />
+
+            <ImageView
+                android:id="@+id/lpl_btn_play"
+                style="@style/lpl_btn_play"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_artist"
+                tools:srcCompat="@drawable/btn_play"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/lpl_btn_add"
+                style="@style/lpl_btn_add"
+                android:importantForAccessibility="no"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lpl_btn_play"
+                tools:srcCompat="@drawable/btn_add" />
+
+            <ImageView
+                android:id="@+id/lpl_btn_like"
+                style="@style/lpl_btn_like"
+                android:importantForAccessibility="no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lpl_btn_play"
+                tools:srcCompat="@drawable/btn_like" />
+
+            <TextView
+                android:id="@+id/lpl_playtime"
+                style="@style/lpl_playtime"
+                app:layout_constraintEnd_toEndOf="@+id/lpl_btn_play"
+                app:layout_constraintStart_toStartOf="@+id/lpl_btn_play"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_btn_play"
+                tools:text="0:30" />
+
+            <!-- Длительность -->
+            <TextView
+                android:id="@+id/lpl_trackTime_caption"
+                style="@style/lpl_property_caption_first"
+                android:text="@string/lpl_trackTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_playtime" />
+
+            <TextView
+                android:id="@+id/lpl_trackTime"
+                style="@style/lpl_property_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lpl_trackTime_caption"
+                app:layout_constraintTop_toTopOf="@+id/lpl_trackTime_caption"
+                tools:text="5:35" />
+
+            <!-- Альбом -->
+            <TextView
+                android:id="@+id/lpl_collectionName_caption"
+                style="@style/lpl_property_caption"
+                android:text="@string/lpl_collectionName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_trackTime_caption" />
+
+            <TextView
+                android:id="@+id/lpl_collectionName"
+                style="@style/lpl_property_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lpl_collectionName_caption"
+                app:layout_constraintTop_toTopOf="@+id/lpl_collectionName_caption"
+                tools:text="Yesterday (Remastered 2009)" />
+
+            <!-- Год -->
+            <TextView
+                android:id="@+id/lpl_year_caption"
+                style="@style/lpl_property_caption"
+                android:text="@string/lpl_year"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_collectionName_caption" />
+
+            <TextView
+                android:id="@+id/lpl_year"
+                style="@style/lpl_property_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lpl_year_caption"
+                app:layout_constraintTop_toTopOf="@+id/lpl_year_caption"
+                tools:text="1965" />
+
+            <!-- Жанр -->
+            <TextView
+                android:id="@+id/lpl_primaryGenreName_caption"
+                style="@style/lpl_property_caption"
+                android:text="@string/lpl_primaryGenreName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_year_caption" />
+
+            <TextView
+                android:id="@+id/lpl_primaryGenreName"
+                style="@style/lpl_property_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lpl_primaryGenreName_caption"
+                app:layout_constraintTop_toTopOf="@+id/lpl_primaryGenreName_caption"
+                tools:text="Rock" />
+
+            <!-- Страна -->
+            <TextView
+                android:id="@+id/lpl_country_caption"
+                style="@style/lpl_property_caption"
+                android:text="@string/lpl_country"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpl_primaryGenreName" />
+
+            <TextView
+                android:id="@+id/lpl_country"
+                style="@style/lpl_property_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lpl_country_caption"
+                app:layout_constraintTop_toTopOf="@+id/lpl_country_caption"
+                tools:text="Великобритания" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -12,16 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlaylistMaker">
         <activity
-            android:name=".SearchActivity"
+            android:name=".ui.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".MediatekaActivity"
+            android:name=".ui.MediatekaActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.PlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
