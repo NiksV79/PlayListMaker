@@ -8,16 +8,16 @@
     <!-- Заголовок страницы -->
     <LinearLayout
         style = "@style/lays_back"
-        android:id="@+id/lay_settings_layout_back">
+        android:id="@+id/lst_layout_back">
 
         <ImageView
             style = "@style/lays_back_img"
-            android:contentDescription="@string/lay_settings_head"
+            android:contentDescription="@string/lst_head"
             app:srcCompat="@drawable/ic_back" />
 
         <TextView
             style = "@style/lays_back_text"
-            android:text="@string/lay_settings_head"/>
+            android:text="@string/lst_head"/>
     </LinearLayout>
 
     <ScrollView
@@ -34,28 +34,27 @@
                 android:id="@+id/lst_theme"
                 style = "@style/lst_theme"
                 android:layout_width="match_parent"
-                android:text = "@string/lay_settings_op_darktheme"/>
+                android:text = "@string/lst_op_darktheme"/>
 
             <TextView
-                style = "@style/lay_settings_text"
-                android:id="@+id/lay_settings_op_share"
+                style = "@style/lst_text"
+                android:id="@+id/lst_op_share"
                 android:layout_width="match_parent"
-                android:text="@string/lay_settings_op_share"
+                android:text="@string/lst_op_share"
                 app:drawableEndCompat="@drawable/ic_share"/>
 
             <TextView
-                style = "@style/lay_settings_text"
+                style = "@style/lst_text"
                 android:id="@+id/lay_settings_op_support"
                 android:layout_width="match_parent"
-                android:text="@string/lay_settings_op_support"
+                android:text="@string/lst_op_support"
                 app:drawableEndCompat="@drawable/ic_support"/>
 
             <TextView
-                style = "@style/lay_settings_text"
-                android:id="@+id/lay_settings_op_user_agreement"
+                style = "@style/lst_text"
+                android:id="@+id/lst_op_user_agreement"
                 android:layout_width="match_parent"
-                android:text="@string/lay_settings_op_user_agreement"
-                android:textColor="?attr/colorOnPrimary"
+                android:text="@string/lst_op_user_agreement"
                 app:drawableEndCompat="@drawable/ic_arrow_forward"/>
 
         </LinearLayout>

@@ -10,16 +10,16 @@
     <string name="text_content">Контент</string>
 
     <!-- Lay settings -->
-    <string name="lay_settings_head">Настройки</string>
-    <string name="lay_settings_op_share">Поделиться приложением</string>
-    <string name="lay_settings_op_support">Написать в поддержку</string>
-    <string name="lay_settings_op_user_agreement">Пользовательское соглашение</string>
-    <string name="lay_settings_op_darktheme">Темная тема</string>
-    <string name="lay_settings_op_share_weblink">"https://practicum.yandex.ru/android-developer/"</string>
-    <string name="lay_settings_op_support_email_sender">"nkt1c@list.ru"</string>
-    <string name="lay_settings_op_support_email_subject">"Сообщение разработчикам и разработчицам приложения Playlist Maker"</string>
-    <string name="lay_settings_op_support_email_text">"Спасибо разработчикам и разработчицам за крутое приложение!"</string>
-    <string name="lay_settings_op_user_agreement_weblink">"https://yandex.ru/legal/practicum_offer/ru/"</string>
+    <string name="lst_head">Настройки</string>
+    <string name="lst_op_share">Поделиться приложением</string>
+    <string name="lst_op_support">Написать в поддержку</string>
+    <string name="lst_op_user_agreement">Пользовательское соглашение</string>
+    <string name="lst_op_darktheme">Темная тема</string>
+    <string name="lst_op_share_weblink">"https://practicum.yandex.ru/android-developer/"</string>
+    <string name="lst_op_support_email_sender">"nkt1c@list.ru"</string>
+    <string name="lst_op_support_email_subject">"Сообщение разработчикам и разработчицам приложения Playlist Maker"</string>
+    <string name="lst_op_support_email_text">"Спасибо разработчикам и разработчицам за крутое приложение!"</string>
+    <string name="lst_op_user_agreement_weblink">"https://yandex.ru/legal/practicum_offer/ru/"</string>
 
     <!-- Lay search -->
     <string name="lsr_nodata">Ничего не нашлось</string>
