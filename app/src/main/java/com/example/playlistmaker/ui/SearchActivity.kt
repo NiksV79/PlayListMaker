@@ -3,13 +3,14 @@ package com.example.playlistmaker.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
@@ -42,6 +43,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchActivity: AppCompatActivity() {
     lateinit var app: App
+    private val handler = Handler(Looper.getMainLooper())
+    private val runSearch = Runnable { doSearch() }
 
     private lateinit var binding: ActivitySearchBinding
     lateinit var et:EditText
@@ -52,13 +55,15 @@ class SearchActivity: AppCompatActivity() {
         .build()
     private val iTunesService = retrofit.create(ITunesApi::class.java)
 
+
     lateinit var recycler: RecyclerView
     val adapter = TracksAdapter { track ->  gotoPlayerActivity(track) }
+    var isPlayerReady = true
 
     private val tracks = ArrayList<Track>()
     private val tracksHistory = ArrayList<Track>()
 
-    private enum class ViewState {INIT,START,LIST,HISTORY,NODATA,NOWIFI}
+    private enum class ViewState {INIT,START,WAIT,LIST,HISTORY,NODATA,NOWIFI}
     private var state: ViewState = ViewState.INIT
         set(value) {
             changeState(value)
@@ -92,7 +97,7 @@ class SearchActivity: AppCompatActivity() {
         initEditText()
 
         binding.lsrBack.setOnClickListener { finish() }
-        binding.lsrNowifiBtn.setOnClickListener { etOnOk(EditorInfo.IME_ACTION_DONE) }
+        binding.lsrNowifiBtn.setOnClickListener { doSearch() }
         binding.lsrHistoryClearBtn.setOnClickListener { tracksHistoryClear() }
 
         state = ViewState.START
@@ -118,7 +123,7 @@ class SearchActivity: AppCompatActivity() {
 
         et.setOnTouchListener { _, event -> etOnTouch(event) }
         et.addTextChangedListener(tw)
-        et.setOnEditorActionListener { _, actionId, _ -> etOnOk(actionId) }
+        et.setOnEditorActionListener { _, actionId, _ -> doSearch() }
         et.setOnFocusChangeListener { _,hasFocus -> etOnFocusChange(hasFocus) }
 
         twOnTextChanged(et.text)
@@ -138,11 +143,11 @@ class SearchActivity: AppCompatActivity() {
     }
 
     //-- методы состояния
-    private fun checkState() {
+    private fun checkState(fromET:Boolean = false) {
         val hState = (tracksHistory.isNotEmpty() && etFocused && et.text.isEmpty())
         state = when (hState) {
             true -> ViewState.HISTORY
-            false -> ViewState.LIST
+            false -> if (fromET) ViewState.WAIT else ViewState.LIST
         }
     }
     @SuppressLint("NotifyDataSetChanged")
@@ -159,9 +164,20 @@ class SearchActivity: AppCompatActivity() {
                 binding.lsrList.visibility = View.VISIBLE
                 binding.lsrNodata.visibility = View.GONE
                 binding.lsrNowifi.visibility = View.GONE
+                binding.lsrWaiting.visibility = View.GONE
 
                 binding.lsrHistoryText.visibility = View.GONE
                 binding.lsrHistoryClearBtn.visibility = View.GONE
+            }
+            ViewState.WAIT -> {
+                binding.lsrList.visibility = View.GONE
+                binding.lsrNodata.visibility = View.GONE
+                binding.lsrNowifi.visibility = View.GONE
+                binding.lsrWaiting.visibility = View.VISIBLE
+
+                binding.lsrHistoryText.visibility = View.GONE
+                binding.lsrHistoryClearBtn.visibility = View.GONE
+
             }
             ViewState.LIST -> {
                 adapter.tracks = tracks
@@ -170,6 +186,7 @@ class SearchActivity: AppCompatActivity() {
                 binding.lsrList.visibility = View.VISIBLE
                 binding.lsrNodata.visibility = View.GONE
                 binding.lsrNowifi.visibility = View.GONE
+                binding.lsrWaiting.visibility = View.GONE
 
                 binding.lsrHistoryText.visibility = View.GONE
                 binding.lsrHistoryClearBtn.visibility = View.GONE
@@ -181,6 +198,7 @@ class SearchActivity: AppCompatActivity() {
                 binding.lsrList.visibility = View.VISIBLE
                 binding.lsrNodata.visibility = View.GONE
                 binding.lsrNowifi.visibility = View.GONE
+                binding.lsrWaiting.visibility = View.GONE
 
                 binding.lsrHistoryText.visibility = View.VISIBLE
                 binding.lsrHistoryClearBtn.visibility = View.VISIBLE
@@ -189,22 +207,28 @@ class SearchActivity: AppCompatActivity() {
                 binding.lsrList.visibility = View.GONE
                 binding.lsrNodata.visibility = View.VISIBLE
                 binding.lsrNowifi.visibility = View.GONE
+                binding.lsrWaiting.visibility = View.GONE
             }
             ViewState.NOWIFI -> {
                 binding.lsrList.visibility = View.GONE
                 binding.lsrNodata.visibility = View.GONE
                 binding.lsrNowifi.visibility = View.VISIBLE
+                binding.lsrWaiting.visibility = View.GONE
             }
         }
     }
 
     // Запустить Player
     private fun gotoPlayerActivity(track: Track) {
-        trackHistoryAdd(track)
+        if (isPlayerReady) {
+            isPlayerReady = false
+            trackHistoryAdd(track)
 
-        val intent = Intent(this, PlayerActivity::class.java)
-        intent.putExtra(Entities.TRACK,track)
-        startActivity(intent)
+            val intent = Intent(this, PlayerActivity::class.java)
+            intent.putExtra(Entities.TRACK,track)
+            startActivity(intent)
+            handler.postDelayed({ isPlayerReady = true},PLAYER_CLICK_INTERVAL)
+        }
     }
 
     //-- методы истории
@@ -238,7 +262,12 @@ class SearchActivity: AppCompatActivity() {
         val startDrawable = getDrawable(R.drawable.ic_search14)
         val endDrawable = if (s.isNullOrEmpty()) null else getDrawable(R.drawable.ic_clear)
         et.setCompoundDrawablesWithIntrinsicBounds(startDrawable,null,endDrawable,null)
-        checkState()
+        checkState(true)
+
+        handler.removeCallbacks(runSearch)
+        if (!s.isNullOrEmpty()) {
+            handler.postDelayed(runSearch,SEARCH_DELAY)
+        }
     }
     fun isTouchInDrawableEnd(event: MotionEvent): Boolean {
         val drawableEnd = et.compoundDrawables[2] ?: return false
@@ -264,9 +293,10 @@ class SearchActivity: AppCompatActivity() {
     fun etOnFocusChange(hasFocus: Boolean) {
         etFocused = hasFocus
     }
-    fun etOnOk(actionId:Int): Boolean {
-        if (actionId != EditorInfo.IME_ACTION_DONE) return false
-
+    fun doSearch(): Boolean {
+        if (state != ViewState.WAIT) {
+            state = ViewState.WAIT
+        }
         iTunesService.search(et.text.toString()).enqueue(object : Callback<ITunesResponseSongs>
         {
             override fun onResponse(call: Call<ITunesResponseSongs>, response: Response<ITunesResponseSongs>) {
@@ -303,6 +333,8 @@ class SearchActivity: AppCompatActivity() {
     companion object {
         const val ET_ID = "ET_ID"
         const val ET_DEF = ""
+        const val PLAYER_CLICK_INTERVAL = 1000L
+        const val SEARCH_DELAY = 2000L
         const val MAX_TRACKS_IN_HISTORY = 10
     }
 }

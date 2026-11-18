@@ -14,7 +14,8 @@ data class Track (
     val collectionName: String?, //Альбом
     val primaryGenreName: String?, //Жанр
     val releaseDate:String?, //дата трека
-    val country: String? //Страна
+    val country: String?, //Страна
+    val previewUrl: String? //URL контента
 ) : Parcelable {
     val artworkUrl512: String
         get() = artworkUrl100.replaceAfterLast('/',"512x512bb.jpg")
@@ -23,5 +24,9 @@ data class Track (
 }
 
 fun Long.toTrackTime(): String {
+    return SimpleDateFormat("mm:ss", Locale.getDefault()).format(this)
+}
+
+fun Int.toTrackTime(): String {
     return SimpleDateFormat("mm:ss", Locale.getDefault()).format(this)
 }

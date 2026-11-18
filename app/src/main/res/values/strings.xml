@@ -33,5 +33,7 @@
     <string name="lpl_year">Год</string>
     <string name="lpl_primaryGenreName">Жанр</string>
     <string name="lpl_country">Страна</string>
+    <string name="lpl_loading_text">Загрузка</string>
+    <string name="lpl_nodata">Нет доступного контента</string>
 
 </resources>

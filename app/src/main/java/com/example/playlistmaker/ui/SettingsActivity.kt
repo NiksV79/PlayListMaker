@@ -10,7 +10,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.example.playlistmaker.App
 import com.example.playlistmaker.R
-import com.example.playlistmaker.databinding.ActivityMainBinding
 import com.example.playlistmaker.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
