@@ -2,8 +2,12 @@
 <resources>
     <color name="black">#1A1B22</color>
     <color name="white">#FFFFFF</color>
-    <color name="red">#FF0000</color>
+
+    <color name="blue">#3772E7</color>
+    <color name="blue_light">#9FBBF3</color>
     <color name="gray">#AEAFB4</color>
+    <color name="gray_light">#E6E8EB</color>
+    <color name="red">#FF0000</color>
 
     <color name="text">@color/black</color>
     <color name="bg">@color/white</color>
@@ -14,6 +18,9 @@
     <color name="lsr_edit_text_bg">#E6E8EB</color>
     <color name="lsr_edit_text">@color/black</color>
     <color name="lsr_edit_text_hint">#818C99</color>
+
+    <color name="lst_theme_track">@color/gray_light</color>
+    <color name="lst_theme_thumb">@color/gray</color>
 
     <color name="tw_TrackName">#000000</color>
     <color name="tw_ArtistName">@color/gray</color>

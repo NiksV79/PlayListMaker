@@ -7,6 +7,9 @@
     <color name="lsr_edit_text_bg">@color/text</color>
     <color name="lsr_edit_text_hint">@color/bg</color>
 
+    <color name="lst_theme_track">@color/blue_light</color>
+    <color name="lst_theme_thumb">@color/blue</color>
+
     <color name="tw_TrackName">@color/text</color>
     <color name="tw_ArtistName">@color/text</color>
 

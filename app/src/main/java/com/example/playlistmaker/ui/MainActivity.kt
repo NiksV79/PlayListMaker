@@ -2,29 +2,41 @@ package com.example.playlistmaker.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.playlistmaker.R
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import com.example.playlistmaker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        enableEdgeToEdge()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnFind = findViewById<Button>(R.id.lay_main_btn_find)
-        btnFind.setOnClickListener {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root)
+        {
+            view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = bars.top,bottom = bars.bottom)
+            insets
+        }
+
+        binding.layMainBtnFind.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
 
-        val btnMediateka = findViewById<Button>(R.id.lay_main_btn_mediateka)
-        btnMediateka.setOnClickListener {
+        binding.layMainBtnMediateka.setOnClickListener {
             val intent = Intent(this, MediatekaActivity::class.java)
             startActivity(intent)
         }
 
-        val btnSettings = findViewById<Button>(R.id.lay_main_btn_settings)
-        btnSettings.setOnClickListener {
+        binding.layMainBtnSettings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
